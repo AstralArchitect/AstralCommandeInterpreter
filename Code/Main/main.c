@@ -76,11 +76,11 @@ int main() {
     fichier = fopen("../../etc/astral.conf", "w+");
     fprintf(fichier, "g, w, $");
     fclose(fichier);
-    fichier = fopen("../../astral.conf", "r");
+    fichier = fopen("../../etc/astral.conf", "r");
     fscanf(fichier, "%c, %c, ", &color1, &color2);
+    fgets(text, INVITE_MAX_SIZE, fichier);
     charColor = getColor(color1);
     textColor = getColor(color2);
-    fgets(text, 10, fichier);
     fclose(fichier);
   }
   typedPrint("Bienvenu dans l'AstralCommandeInterpreter,", "\033[0;37m", 50);
@@ -110,7 +110,7 @@ int main() {
       typedPrint("arret de AstralCommandeInterpreter...", "\033[0;31m", 25);
       sleep_ms(1000);
       printf("\033[0;37m");
-      exit(0);
+      return 0;
     }
     else if(commande[0] == 'r' && commande[1] == 'e' && commande[2] == 'l' && commande[3] == 'o' && commande[4] == 'a' && commande[5] == 'd'){
       //recharger AstralConfig
