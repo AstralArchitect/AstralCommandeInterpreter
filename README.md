@@ -6,6 +6,9 @@ Ceci est un interpréteur de commande inventé par AstralArchitect en collaborat
 
 - **exit**: sortir de AstralCommandeInterpreter
 - **reload**: recharger le fichier de personnalisation
+- **ls**: afficher le contenu d'un fichier
+- **mv**: deplacer un fichier
+- **rm**: supprimer un fichier
   
 # créer des programmes
 Pour créer des programmes, il y a plusieurs façons de procéder.
