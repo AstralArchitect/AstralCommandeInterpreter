@@ -18,4 +18,3 @@ Créez votre exécutables et mettez le dans Programmes/Lin/
 ## windows
 Même procédure que pour Linux mais mettez votre exécutable dans Programmes/Win/
 
-![Capture](https://github.com/AstralArchitect/AstralCommandInterpreter/assets/154975712/73657235-fae5-4a09-a693-b94e30d73433)
