@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "../commandes_System/universallib.h"
 
 #define MAX_INPUT_SIZE 100
 #define INVITE_MAX_SIZE 30
 #define PATH_SIZE 30
+
+bool RemoveUs = false;
 
 //fonction pour vider le buffer
 void viderBuffer()
@@ -58,14 +61,15 @@ int main() {
     printf("\033[0;31m Erreur ! PATH introuvable.\n \033[0;37m");
     exit(0);
   }
-  FILE *fichier = NULL;
-  fichier = fopen("../../etc/astral.conf", "r");
   char color1, color2;
   int charColor, textColor;
+  int ShowUserName;
   char text[INVITE_MAX_SIZE + 1];
+  FILE *fichier = NULL;
+  fichier = fopen("../../etc/astral.conf", "r");
   clear();
   if(fichier != NULL){
-    fscanf(fichier, "%c, %c, ", &color1, &color2);
+    fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
     fgets(text, INVITE_MAX_SIZE, fichier);
     charColor = getColor(color1);
     textColor = getColor(color2);
@@ -74,10 +78,10 @@ int main() {
   else{
     printf("creation de astral.conf...\n");
     fichier = fopen("../../etc/astral.conf", "w+");
-    fprintf(fichier, "g, w, $");
+    fprintf(fichier, "g, w, 1, $");
     fclose(fichier);
     fichier = fopen("../../etc/astral.conf", "r");
-    fscanf(fichier, "%c, %c, ", &color1, &color2);
+    fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
     fgets(text, INVITE_MAX_SIZE, fichier);
     charColor = getColor(color1);
     textColor = getColor(color2);
@@ -87,7 +91,36 @@ int main() {
   while(1){
     char commande[MAX_INPUT_SIZE + 1];
     printf("\033[0;%dm", charColor);
-    printf("%s ", text);
+    if(ShowUserName){
+      #ifdef _WIN32
+      FILE *us = fopen("..\\..\\etc\\us.conf", "r");
+      #elif _WIN64
+      FILE *us = fopen("..\\..\\etc\\us.conf", "r");
+      #else
+      FILE *us = fopen("../../etc/us.conf", "r");
+      #endif
+      if(us != NULL){
+        char UserName[100];
+        fgets(UserName, 99, us);
+        printf("%s:%s", UserName, text);
+      }
+      else{
+        printf("\033[0;31mimpossible d'ouvrir us.conf.\033[0;37m\n");
+        #ifdef _WIN32
+        us = fopen("..\\..\\etc\\us.conf", "w+");
+        #elif _WIN64
+        us = fopen("..\\..\\etc\\us.conf", "w+");
+        #else
+        us = fopen("../../etc/us.conf", "w+");
+        #endif
+        fputs("undefined", us);
+        fclose(us);
+        continue;
+      }
+    }
+    else{
+      printf("%s ", text);
+    }
     printf("\033[0;%dm", textColor);
     fgets(commande, MAX_INPUT_SIZE, stdin);
     //créer un pointeur qui servira à chercher le caractère '\n'
@@ -116,10 +149,13 @@ int main() {
       //recharger AstralConfig
       fichier = fopen("../../etc/astral.conf", "r");
       if(fichier != NULL){
-        fscanf(fichier, "%c, %c, ", &color1, &color2);
+        fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
         fgets(text, INVITE_MAX_SIZE, fichier);
         charColor = getColor(color1);
         textColor = getColor(color2);
+        if(RemoveUs){
+          remove("../../etc/us.conf");
+        }
         fclose(fichier);
       }
       else{
