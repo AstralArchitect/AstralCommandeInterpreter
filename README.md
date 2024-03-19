@@ -4,14 +4,13 @@ Ceci est un interpréteur de commande inventé par AstralArchitect en collaborat
 
 # Commandes de base
 
-- **exit**: sortir de AstralCommandeInterpreter
-- **reload**: recharger le fichier de personnalisation
-- **ls**: afficher le contenu d'un fichier
-- **mv**: deplacer un fichier
-- **rm**: supprimer un fichier
+[]**exit**: sortir de AstralCommandeInterpreter
+[]**reload**: recharger le fichier de personnalisation
+[]**ls**: afficher le contenu d'un fichier
+[]**mv**: deplacer un fichier
+[]**rm**: supprimer un fichier
   
   note: ls, mv et rm s'utilisent de la même façon que sur linux
-  [^1]: Vous trouverez ici le texte de la note de bas de page.
 # créer des programmes
 Pour créer des programmes, il y a plusieurs façons de procéder.
 ## Linux
