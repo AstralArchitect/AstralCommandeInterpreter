@@ -10,7 +10,7 @@ Ceci est un interpréteur de commande inventé par AstralArchitect en collaborat
 - **mv**: deplacer un fichier
 - **rm**: supprimer un fichier
   
-  *note*: ls, mv et rm s'utilisent de la même façon que sur linux
+  *note* : ls, mv et rm s'utilisent de la même façon que sur linux
 # créer des programmes
 Pour créer des programmes, il y a plusieurs façons de procéder.
 ## Linux
