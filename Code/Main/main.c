@@ -20,6 +20,42 @@ void viderBuffer()
   }
 }
 
+int System() {
+  while (1)
+  {
+    char commande[MAX_INPUT_SIZE + 1];
+    printf("\033[0;33m$ \033[0;37m");
+    fgets(commande, MAX_INPUT_SIZE, stdin);
+    //créer un pointeur qui servira à chercher le caractère '\n'
+    char *positionEntree = NULL;
+    //chercher le caractère '\n' dans la liste commande
+    positionEntree = strchr(commande, '\n');
+    //si le caractère éxiste...
+    if (positionEntree != NULL)
+    {
+      //alors, le remplacer par '\0'
+      *positionEntree = '\0';
+    }
+    //sinon...
+    else
+    {
+      //l'utilisateur a entré une chaine de caractères trop grande. Il faut vider le buffer
+      viderBuffer();
+    }
+    if((commande[0] == 'e' && commande[1] == 'x' && commande[2] == 'i' && commande[3] == 't') || (commande[0] == 'l' && commande[1] == 'o' && commande[2] == 'g' && commande[3] == 'o' && commande[4] == 'u' && commande[5] == 't')){
+      typedPrint("Sortie du mode systeme...", "\033[0;35m", 25);
+      sleep_ms(1000);
+      printf("\033[0;37m");
+      return 0;
+    }
+    else{
+      char exe[100];
+      sprintf(exe, "%s", commande);
+      system(exe);
+    }
+  }
+}
+
 int getColor(char color) {
   switch (color)
   {
@@ -99,13 +135,22 @@ int main() {
       #else
       FILE *us = fopen("../../etc/us.conf", "r");
       #endif
+      char UserName[100];
       if(us != NULL){
-        char UserName[100];
         fgets(UserName, 99, us);
         printf("%s:%s", UserName, text);
       }
       else{
         printf("\033[0;31mimpossible d'ouvrir us.conf.\033[0;37m\n");
+        printf("Quel est votre nom d'utilisateur ?:");
+        fgets(UserName, 99, stdin);
+        char *retour = strchr(UserName, '\n');
+        if(*retour != NULL){
+          *retour = '\0';
+        }
+        else{
+          viderBuffer();
+        }
         #ifdef _WIN32
         us = fopen("..\\..\\etc\\us.conf", "w+");
         #elif _WIN64
@@ -113,7 +158,7 @@ int main() {
         #else
         us = fopen("../../etc/us.conf", "w+");
         #endif
-        fputs("undefined", us);
+        fprintf(us, "%s", UserName);
         fclose(us);
         continue;
       }
@@ -171,6 +216,10 @@ int main() {
         printf("\033[0;31m Erreur ! PATH introuvable.\n \033[0;37m");
         exit(0);
       }
+    }
+    else if (commande[0] == 's' && commande[1] == 'y' && commande[2] == 's')
+    {
+      System();
     }
     else{
       execute(path, commande);
