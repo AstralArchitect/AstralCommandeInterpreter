@@ -88,7 +88,13 @@ int getColor(char color) {
 int main() {
   FILE *Path = NULL;
   char path[PATH_SIZE];
-  Path = fopen("../../etc/PATH", "r");
+  #ifdef _WIN32
+    Path = fopen("..\\..\\etc\\PATH", "r");
+  #elif _WIN64
+    Path = fopen("..\\..\\etc\\PATH", "r");
+  #else
+    Path = fopen("../../etc/PATH", "r");
+  #endif
   if(Path != NULL){
     fgets(path, PATH_SIZE, Path);
     fclose(Path);
