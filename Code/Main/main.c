@@ -113,10 +113,22 @@ int main() {
   }
   else{
     printf("creation de astral.conf...\n");
+    #ifdef _WIN32
+    fichier = fopen("..\\..\\etc\\astral.conf", "w+");
+    #elif _WIN64
+    fichier = fopen("..\\..\\etc\\astral.conf", "w+");
+    #else
     fichier = fopen("../../etc/astral.conf", "w+");
+    #endif
     fprintf(fichier, "g, w, 1, $");
     fclose(fichier);
+    #ifdef _WIN32
+    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+    #elif _WIN64
+    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+    #else
     fichier = fopen("../../etc/astral.conf", "r");
+    #endif
     fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
     fgets(text, INVITE_MAX_SIZE, fichier);
     charColor = getColor(color1);
