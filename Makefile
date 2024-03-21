@@ -8,7 +8,7 @@ all:
 	x86_64-w64-mingw32-gcc Code/commandes_System/aff.c -o Programmes/Win/aff.exe
 	x86_64-w64-mingw32-gcc Code/age/Win/main.c -o Programmes/Win/age.exe
 	x86_64-w64-mingw32-gcc Code/date/date.c -o Programmes/Win/date.exe  
-	x86_64-w64-mingw32-gcc Code/configure/main.c -o conf/configure.exe  
+	x86_64-w64-mingw32-gcc Code/configure/main.c -o Programmes/Win/configure.exe  
 	x86_64-w64-mingw32-gcc Code/poid_planetes/main.c -o Programmes/Win/poid_planetes.exe
 	@echo "compilation pour Windows terminee !"
 
@@ -26,7 +26,7 @@ lin:
 	gcc Code/commandes_System/aff.c -o Programmes/Lin/aff  
 	gcc Code/age/Lin/main.c -o Programmes/Lin/age  
 	gcc Code/date/date.c -o Programmes/Lin/date  
-	gcc Code/configure/main.c -o conf/configure  
+	gcc Code/configure/main.c -o Programmes/Win/configure.exe
 	gcc Code/poid_planetes/main.c -o Programmes/Lin/poid_planetes  
 	@echo "compilation pour Linux terminee !"
 
@@ -40,8 +40,8 @@ win:
 	gcc Code/commandes_System/aff.c -o Programmes/Win/aff.exe
 	gcc Code/age/Win/main.c -o Programmes/Win/age.exe
 	gcc Code/date/date.c -o Programmes/Win/date.exe  
-	gcc Code/configure/main.c -o conf/configure.exe  
+	gcc Code/configure/main.c -o Programmes/Win/configure.exe
 	gcc Code/poid_planetes/main.c -o Programmes/Win/poid_planetes.exe
 	@echo "compilation pour Windows terminee !"
-clean:
-	rm universallib.o
+rm:
+	rm universallib.o bin/Windows/universallib.dll ./bin/Windows/AstralCommandeInterpreter.exe Programmes/Win/ls.exe Programmes/Win/mv.exe Programmes/Win/rm.exe Programmes/Win/aff.exe Programmes/Win/age.exe Programmes/Win/date.exe Programmes/Win/configure.exe Programmes/Win/poid_planetes.exe
