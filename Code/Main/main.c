@@ -108,7 +108,13 @@ int main() {
   int ShowUserName;
   char text[INVITE_MAX_SIZE + 1];
   FILE *fichier = NULL;
-  fichier = fopen("../../etc/astral.conf", "r");
+  #ifdef _WIN32
+    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+  #elif _WIN64
+    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+  #else
+    fichier = fopen("../../etc/astral.conf", "r");
+  #endif
   clear();
   if(fichier != NULL){
     fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
