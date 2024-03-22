@@ -18,7 +18,7 @@ Créez votre exécutables et mettez le dans Programmes/Lin/
 ## windows
 Même procédure que pour Linux mais mettez votre exécutable dans Programmes/Win/
 # Compiler le code
-Pour compiler le code, installez d'abord meson et ninja avec `pip install meson` et `.
+Pour compiler le code, installez d'abord meson et ninja avec `pip install meson` et `pip install ninja`.
 Ensuite, tapez les commandes suivantes
 ```
 meson setup bin
