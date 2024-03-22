@@ -16,10 +16,10 @@ char *exePath() {
     return "Win";
 }
 
-void execute(char path[30], char commande[16]) {
+void execute(char commande[16]) {
     printf("\033[0;37m");
     char exe[100];
-    sprintf(exe, "..\\..\\%s\\%s\\%s", path, exePath(), commande);
+    sprintf(exe, ".\\%s", commande);
     system(exe);
 }
 
@@ -44,10 +44,10 @@ char *exePath() {
     return "Lin";
 }
 
-void execute(char path[30], char commande[16]) {
+void execute(char commande[16]) {
     printf("\033[0;37m");
     char exe[100];
-    sprintf(exe, "../../%s/%s/%s", path, exePath(), commande);
+    sprintf(exe, "./%s", commande);
     system(exe);
 }
 

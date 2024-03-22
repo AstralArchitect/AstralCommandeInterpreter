@@ -6,7 +6,6 @@
 
 #define MAX_INPUT_SIZE 100
 #define INVITE_MAX_SIZE 30
-#define PATH_SIZE 30
 
 bool RemoveUs = false;
 
@@ -86,34 +85,17 @@ int getColor(char color) {
 }
 
 int main() {
-  FILE *Path = NULL;
-  char path[PATH_SIZE];
-  #ifdef _WIN32
-    Path = fopen("..\\..\\etc\\PATH", "r");
-  #elif _WIN64
-    Path = fopen("..\\..\\etc\\PATH", "r");
-  #else
-    Path = fopen("../../etc/PATH", "r");
-  #endif
-  if(Path != NULL){
-    fgets(path, PATH_SIZE, Path);
-    fclose(Path);
-  }
-  else{
-    printf("\033[0;31m Erreur ! PATH introuvable.\n \033[0;37m");
-    exit(0);
-  }
   char color1, color2;
   int charColor, textColor;
   int ShowUserName;
   char text[INVITE_MAX_SIZE + 1];
   FILE *fichier = NULL;
   #ifdef _WIN32
-    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+    fichier = fopen("..\\etc\\astral.conf", "r");
   #elif _WIN64
-    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+    fichier = fopen("..\\etc\\astral.conf", "r");
   #else
-    fichier = fopen("../../etc/astral.conf", "r");
+    fichier = fopen("../etc/astral.conf", "r");
   #endif
   clear();
   if(fichier != NULL){
@@ -126,20 +108,20 @@ int main() {
   else{
     printf("creation de astral.conf...\n");
     #ifdef _WIN32
-    fichier = fopen("..\\..\\etc\\astral.conf", "w+");
+    fichier = fopen("..\\etc\\astral.conf", "w+");
     #elif _WIN64
-    fichier = fopen("..\\..\\etc\\astral.conf", "w+");
+    fichier = fopen("..\\etc\\astral.conf", "w+");
     #else
-    fichier = fopen("../../etc/astral.conf", "w+");
+    fichier = fopen("../etc/astral.conf", "w+");
     #endif
     fprintf(fichier, "g, w, 1, $");
     fclose(fichier);
     #ifdef _WIN32
-    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+    fichier = fopen("..\\etc\\astral.conf", "r");
     #elif _WIN64
-    fichier = fopen("..\\..\\etc\\astral.conf", "r");
+    fichier = fopen("..\\etc\\astral.conf", "r");
     #else
-    fichier = fopen("../../etc/astral.conf", "r");
+    fichier = fopen("../etc/astral.conf", "r");
     #endif
     fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
     fgets(text, INVITE_MAX_SIZE, fichier);
@@ -153,11 +135,11 @@ int main() {
     printf("\033[0;%dm", charColor);
     if(ShowUserName){
       #ifdef _WIN32
-      FILE *us = fopen("..\\..\\etc\\us.conf", "r");
+      FILE *us = fopen("..\\etc\\us.conf", "r");
       #elif _WIN64
-      FILE *us = fopen("..\\..\\etc\\us.conf", "r");
+      FILE *us = fopen("..\\etc\\us.conf", "r");
       #else
-      FILE *us = fopen("../../etc/us.conf", "r");
+      FILE *us = fopen("../etc/us.conf", "r");
       #endif
       char UserName[100];
       if(us != NULL){
@@ -169,18 +151,18 @@ int main() {
         printf("Quel est votre nom d'utilisateur ?:");
         fgets(UserName, 99, stdin);
         char *retour = strchr(UserName, '\n');
-        if(*retour != NULL){
+        if(retour != NULL){
           *retour = '\0';
         }
         else{
           viderBuffer();
         }
         #ifdef _WIN32
-        us = fopen("..\\..\\etc\\us.conf", "w+");
+        us = fopen("..\\etc\\us.conf", "w+");
         #elif _WIN64
-        us = fopen("..\\..\\etc\\us.conf", "w+");
+        us = fopen("..\\etc\\us.conf", "w+");
         #else
-        us = fopen("../../etc/us.conf", "w+");
+        us = fopen("../etc/us.conf", "w+");
         #endif
         fprintf(us, "%s", UserName);
         fclose(us);
@@ -216,29 +198,19 @@ int main() {
     }
     else if(commande[0] == 'r' && commande[1] == 'e' && commande[2] == 'l' && commande[3] == 'o' && commande[4] == 'a' && commande[5] == 'd'){
       //recharger AstralConfig
-      fichier = fopen("../../etc/astral.conf", "r");
+      fichier = fopen("../etc/astral.conf", "r");
       if(fichier != NULL){
         fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
         fgets(text, INVITE_MAX_SIZE, fichier);
         charColor = getColor(color1);
         textColor = getColor(color2);
         if(RemoveUs){
-          remove("../../etc/us.conf");
+          remove("../etc/us.conf");
         }
         fclose(fichier);
       }
       else{
           printf("\033[0;31merreur, le fichier Astral.conf n'a pas pus etre ouvert.\n\033[0;37m");
-      }
-      //recharger le PATH
-      Path = fopen("../../etc/PATH", "r");
-      if(Path != NULL){
-        fgets(path, PATH_SIZE, Path);
-        fclose(Path);
-      }
-      else{
-        printf("\033[0;31m Erreur ! PATH introuvable.\n \033[0;37m");
-        exit(0);
       }
     }
     else if (commande[0] == 's' && commande[1] == 'y' && commande[2] == 's')
@@ -246,7 +218,7 @@ int main() {
       System();
     }
     else{
-      execute(path, commande);
+      execute(commande);
     }
   }
 }
