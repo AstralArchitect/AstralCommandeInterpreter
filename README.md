@@ -24,3 +24,4 @@ Ensuite, tapez les commandes suivantes
 meson setup bin
 meson compile -C bin
 ```
+et tous les executables seront dans le dossier bin
