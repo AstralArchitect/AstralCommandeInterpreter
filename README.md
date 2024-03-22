@@ -17,4 +17,5 @@ Pour créer des programmes, il y a plusieurs façons de procéder.
 Créez votre exécutables et mettez le dans Programmes/Lin/
 ## windows
 Même procédure que pour Linux mais mettez votre exécutable dans Programmes/Win/
-
+# Compiler le code
+pour compiler le code, installez d'abord meson avec `pip install meson`
