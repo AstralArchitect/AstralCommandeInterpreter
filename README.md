@@ -11,12 +11,6 @@ Ceci est un interpréteur de commande inventé par AstralArchitect en collaborat
 - **rm**: supprimer un fichier
   
   *note* : ls, mv et rm s'utilisent de la même façon que sur linux
-# créer des programmes
-Pour créer des programmes, il y a plusieurs façons de procéder.
-## Linux
-Créez votre exécutables et mettez le dans Programmes/Lin/
-## windows
-Même procédure que pour Linux mais mettez votre exécutable dans Programmes/Win/
 # Compiler le code
 Pour compiler le code, installez d'abord meson et ninja avec `pip install meson` et `pip install ninja`.
 Ensuite, tapez les commandes suivantes
