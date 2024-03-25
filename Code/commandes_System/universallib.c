@@ -8,10 +8,6 @@ void sleep_ms(DWORD milliseconds) {
     Sleep(milliseconds);
 }
 
-void clear() {
-    system("cls");
-}
-
 char *exePath() {
     return "Win";
 }
@@ -34,10 +30,6 @@ void sleep_ms(unsigned long milliseconds) {
     ts.tv_nsec = (milliseconds % 1000) * 1000000;
 
     nanosleep(&ts, NULL);
-}
-
-void clear() {
-    system("clear");
 }
 
 char *exePath() {
@@ -68,4 +60,10 @@ void typedPrint(char text[100], char color[11], int speed) {
         sleep_ms(speed);
     }
     printf("\n");
+}
+
+void clear() {
+    // 2J: Efface l'écran
+    // H = 1;1H: Déplace le curseur en haut à gauche
+    printf("\033[2J\033[H");
 }

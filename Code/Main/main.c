@@ -41,7 +41,7 @@ int System() {
       //l'utilisateur a entré une chaine de caractères trop grande. Il faut vider le buffer
       viderBuffer();
     }
-    if((commande[0] == 'e' && commande[1] == 'x' && commande[2] == 'i' && commande[3] == 't') || (commande[0] == 'l' && commande[1] == 'o' && commande[2] == 'g' && commande[3] == 'o' && commande[4] == 'u' && commande[5] == 't')){
+    if(strcmp(commande, "exit") == 0 || strcmp(commande, "logout") == 0){
       typedPrint("Sortie du mode systeme...", "\033[0;35m", 25);
       sleep_ms(1000);
       printf("\033[0;37m");
@@ -144,7 +144,7 @@ int main() {
       char UserName[100];
       if(us != NULL){
         fgets(UserName, 99, us);
-        printf("%s:%s", UserName, text);
+        printf("%s:%s ", UserName, text);
       }
       else{
         printf("\033[0;31mimpossible d'ouvrir us.conf.\033[0;37m\n");
