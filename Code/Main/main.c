@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../commandes_System/universallib.h"
+#include "../lib/universallib.h"
 
 #define MAX_INPUT_SIZE 100
 #define INVITE_MAX_SIZE 30
@@ -91,11 +91,11 @@ int main() {
   char text[INVITE_MAX_SIZE + 1];
   FILE *fichier = NULL;
   #ifdef _WIN32
-    fichier = fopen("..\\etc\\astral.conf", "r");
+    fichier = fopen(".\\astral.conf", "r");
   #elif _WIN64
-    fichier = fopen("..\\etc\\astral.conf", "r");
+    fichier = fopen(".\\astral.conf", "r");
   #else
-    fichier = fopen("../etc/astral.conf", "r");
+    fichier = fopen("./astral.conf", "r");
   #endif
   clear();
   if(fichier != NULL){
@@ -108,20 +108,20 @@ int main() {
   else{
     printf("creation de astral.conf...\n");
     #ifdef _WIN32
-    fichier = fopen("..\\etc\\astral.conf", "w+");
+    fichier = fopen(".\\astral.conf", "w+");
     #elif _WIN64
-    fichier = fopen("..\\etc\\astral.conf", "w+");
+    fichier = fopen(".\\astral.conf", "w+");
     #else
-    fichier = fopen("../etc/astral.conf", "w+");
+    fichier = fopen("./astral.conf", "w+");
     #endif
     fprintf(fichier, "g, w, 1, $");
     fclose(fichier);
     #ifdef _WIN32
-    fichier = fopen("..\\etc\\astral.conf", "r");
+    fichier = fopen(".\\astral.conf", "r");
     #elif _WIN64
-    fichier = fopen("..\\etc\\astral.conf", "r");
+    fichier = fopen(".\\astral.conf", "r");
     #else
-    fichier = fopen("../etc/astral.conf", "r");
+    fichier = fopen("./astral.conf", "r");
     #endif
     fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
     fgets(text, INVITE_MAX_SIZE, fichier);
@@ -135,11 +135,11 @@ int main() {
     printf("\033[0;%dm", charColor);
     if(ShowUserName){
       #ifdef _WIN32
-      FILE *us = fopen("..\\etc\\us.conf", "r");
+      FILE *us = fopen(".\\us.conf", "r");
       #elif _WIN64
-      FILE *us = fopen("..\\etc\\us.conf", "r");
+      FILE *us = fopen(".\\us.conf", "r");
       #else
-      FILE *us = fopen("../etc/us.conf", "r");
+      FILE *us = fopen("./us.conf", "r");
       #endif
       char UserName[100];
       if(us != NULL){
@@ -158,11 +158,11 @@ int main() {
           viderBuffer();
         }
         #ifdef _WIN32
-        us = fopen("..\\etc\\us.conf", "w+");
+        us = fopen(".\\us.conf", "w+");
         #elif _WIN64
-        us = fopen("..\\etc\\us.conf", "w+");
+        us = fopen(".\\us.conf", "w+");
         #else
-        us = fopen("../etc/us.conf", "w+");
+        us = fopen("./us.conf", "w+");
         #endif
         fprintf(us, "%s", UserName);
         fclose(us);
@@ -190,7 +190,7 @@ int main() {
       //l'utilisateur a entré une chaine de caractères trop grande. Il faut vider le buffer
       viderBuffer();
     }
-    if((commande[0] == 'e' && commande[1] == 'x' && commande[2] == 'i' && commande[3] == 't') || (commande[0] == 'l' && commande[1] == 'o' && commande[2] == 'g' && commande[3] == 'o' && commande[4] == 'u' && commande[5] == 't')){
+    if(strcmp(commande, "exit") == 0 || strcmp(commande, "logout") == 0){
       typedPrint("arret de AstralCommandeInterpreter...", "\033[0;31m", 25);
       sleep_ms(1000);
       printf("\033[0;37m");
@@ -198,19 +198,19 @@ int main() {
     }
     else if(commande[0] == 'r' && commande[1] == 'e' && commande[2] == 'l' && commande[3] == 'o' && commande[4] == 'a' && commande[5] == 'd'){
       //recharger AstralConfig
-      fichier = fopen("../etc/astral.conf", "r");
+      fichier = fopen("./astral.conf", "r");
       if(fichier != NULL){
         fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
         fgets(text, INVITE_MAX_SIZE, fichier);
         charColor = getColor(color1);
         textColor = getColor(color2);
         if(RemoveUs){
-          remove("../etc/us.conf");
+          remove("./us.conf");
         }
         fclose(fichier);
       }
       else{
-          printf("\033[0;31merreur, le fichier Astral.conf n'a pas pus etre ouvert.\n\033[0;37m");
+        printf("\033[0;31merreur, le fichier Astral.conf n'a pas pus etre ouvert.\n\033[0;37m");
       }
     }
     else if (commande[0] == 's' && commande[1] == 'y' && commande[2] == 's')

@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
-int main() {
+int configure() {
     
     #ifdef _WIN32
-    FILE *fichier = fopen("..\\etc\\us.conf", "w+");
+    FILE *fichier = fopen(".\\us.conf", "w+");
     #elif _WIN64
-    FILE *fichier = fopen("..\\etc\\us.conf", "w+");
+    FILE *fichier = fopen(".\\us.conf", "w+");
     #else
-    FILE *fichier = fopen("../etc/us.conf", "w+");
+    FILE *fichier = fopen("./us.conf", "w+");
     #endif
     if(fichier != NULL){
         printf("Entrez un nom d'utilisateur:");

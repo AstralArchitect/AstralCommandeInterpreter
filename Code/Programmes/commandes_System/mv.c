@@ -3,11 +3,7 @@
   #include <stdlib.h>
   #define MAX 256
 
-  int main(int argc, char *argv[]) {
-        if(argc != 3){
-                printf("\033[0;31mUsage: %s <source> <destination>\n\033[0;37m", argv[0]);
-                exit(0);
-        }
+  int mv(int argc[100]) {
         int ch;
         FILE *fp1, *fp2;
 

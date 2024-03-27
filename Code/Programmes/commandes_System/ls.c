@@ -2,15 +2,11 @@
 #include <stdio.h>
 #include <string.h>
  
-int main(int argc, char *argv[])
+void ls(char arg[100])
 {
     struct dirent *dir;
-    if (argc != 2) {
-        printf("Usage: %s <directory>\n", argv[0]);
-        return 1;
-    }
     char dossier[100];
-    strcpy(dossier, argv[1]);
+    strcpy(dossier, arg);
     DIR *d = opendir(dossier); 
     if (d)
     {
@@ -24,5 +20,4 @@ int main(int argc, char *argv[])
     }else{
         printf("impossible d'ouvrir le dossier %s.\n", dossier);
     }
-    return 0;
 }
