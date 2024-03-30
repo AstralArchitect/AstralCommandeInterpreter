@@ -42,5 +42,4 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  Les paquets nécéssaires sont déja installés. Vous pouvez fermer MinGW Installation Manager.
  Pour pouvoir utiliser directement gcc dans un terminal, vous devrez l'ajouter au Path de Windows.
  Pour ce fait, ouvrez une fenêtre de Windows Explorer et faite un clique droit sur "ce PC"(dans la barre des racourcis à gauche), puis Cliquez sur propriétés.
-
-
+![Sans titre](https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/511e96b0-7103-451a-b737-bdbf3ad22ffc)
