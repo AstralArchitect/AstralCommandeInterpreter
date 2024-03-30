@@ -23,5 +23,8 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
   ```
 ### Windows
   Pour installer gcc sur Windows, la procédure est plus complexe. Rendez vous sur le site de [MinGW](https://www.mingw-w64.org/) (l'équivalent de gcc sur windows).
-  <img width="1920" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/97d38d2b-a223-4025-84c1-9c7b514c29c0">
-  Puis
+  ![Sans titre](https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/12739763-309f-45e2-8c8f-8452f2725a61)
+  Puis cliquez sur Download.
+  <img width="1907" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/32f62a39-38fd-4b32-b908-e4dc6cb70201">
+  Ensuite, cliquez sur WinLibs.com.
+  <img width="1908" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/27fd3c24-6d47-43f3-b3e8-47cb83ea6e67">
