@@ -22,5 +22,9 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
   sudo apk add gcc
   ```
 ### Windows
-  Pour installer gcc sur Windows, la procédure est plus complexe. Rendez vous sur [Source Forge](https://sourceforge.net/projects/mingw/) et téléchargez MinGw (l'équivalent de gcc sur windows).
-  
+  Pour installer gcc sur Windows, rendez vous sur [Source Forge](https://sourceforge.net/projects/mingw/) et téléchargez MinGw (l'équivalent de gcc sur windows).
+  Ensuite lançez l'installeur.
+  <img width="452" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/5398c00f-dee2-4020-a4fe-b53a1f67ba29">
+  Puis, cliquez sur "Install".
+  <img width="450" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/fc5f18a2-ed98-438f-8bf7-65749646558d">
+  Après, cliquez sur "Continue" et attendez la fin de l'installation de MinGW.
