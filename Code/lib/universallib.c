@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "../lib/H/commandes_System/aff.h"
-#include "../lib/H/commandes_System/ls.h"
+#include "../include/commandes_System/aff.h"
+#include "../include/commandes_System/ls.h"
 //#include "../Programmes/commandes_System/mv.c" ne marche pas pour l'instant
-#include "../lib/H/commandes_System/rm.h"
-#include "../lib/H/commandes_System/configure.h"
-#include "../lib/H/commandes_System/touch.h"
+#include "../include/commandes_System/rm.h"
+#include "../include/commandes_System/configure.h"
+#include "../include/commandes_System/touch.h"
 
 
 #ifdef _WIN32
@@ -42,7 +42,7 @@ void sleep_ms(unsigned long milliseconds) {
 #include <string.h>
 #include <stdio.h>
 
-void typedPrint(char text[100], char color[11], int speed) {
+void typedPrint(char *text, char *color, int speed) {
     printf("%s", color);
     for(int i = 0; i < strlen(text); i++){
         printf("%c", text[i]);
@@ -55,7 +55,7 @@ void typedPrint(char text[100], char color[11], int speed) {
     printf("\n");
 }
 
-void execute(char commande[30]) {
+void execute(char *commande) {
     printf("\033[0;37m");
     char *espace = &commande[0];
     while (*espace != ' ')

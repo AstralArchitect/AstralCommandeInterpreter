@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../lib/H/universallib.h"
+#include "../include/universallib.h"
 
 #define MAX_INPUT_SIZE 100
 #define INVITE_MAX_SIZE 30
@@ -78,6 +78,7 @@ int getColor(char color) {
     return 37; 
     break;
   default:
+    return 0;
     break;
   }
 }

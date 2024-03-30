@@ -2,20 +2,25 @@
 
 Ceci est un interpréteur de commande inventé par AstralArchitect en collaboration avec [Nautilus-1021](https://github.com/Nautilus-1021)
 
-# Commandes de base
+# Compiler et executer
 
-- **exit**: sortir de AstralCommandeInterpreter
-- **reload**: recharger le fichier de personnalisation
-- **ls**: afficher le contenu d'un fichier
-- **mv**: deplacer un fichier
-- **rm**: supprimer un fichier
+## installer un compilateur
+Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Personnelement, je vous recommande [gcc](https://gcc.gnu.org/) que vous pouvez installer sur:
+### Linux Debian/Ubuntu ou Kali Linux
+ Pour installer gcc sur Debian ou Ubuntu, tapez la commande suivante dans un terminal :
+  ```
+  sudo apt-get install gcc
+  ```
+### Arch Linux
+  Pour installer gcc sur Arch Linux, tapez la commande suivante dans un terminal :
+  ```
+  sudo pacman -S gcc
+  ```
+### Alpine Linux
+  Pour installer gcc sur Alpine Linux, tapez la commande suivante dans un terminal :
+  ```
+  sudo apk add gcc
+  ```
+### Windows
+  Pour installer gcc sur Windows, la procédure est plus complexe. Rendez vous sur le site de [MinGW](https://www.mingw-w64.org/) (l'équivalent de gcc sur windows).
   
-  *note* : ls, mv et rm s'utilisent de la même façon que sur linux
-# Compiler le code
-Pour compiler le code, installez d'abord meson et ninja avec `pip install meson` et `pip install ninja`.
-Ensuite, tapez les commandes suivantes
-```
-meson setup bin
-meson compile -C bin
-```
-et tous les executables seront dans le dossier bin

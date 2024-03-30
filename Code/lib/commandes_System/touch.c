@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int touch(char argument) {
-    FILE *fichier = fopen(&argument, "w+");
+void touch(char argument[30]) {
+    FILE *fichier = fopen(&argument[0], "w+");
     fclose(fichier);
 }
