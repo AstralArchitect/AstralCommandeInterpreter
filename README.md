@@ -34,3 +34,9 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
   Après, cliquez sur "Continue" et attendez la fin de l'installation de MinGW.
 
  <img width="453" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/44f3a130-82ea-497b-af1c-73eb0a75f2fc">
+
+ Ensuite, cliquez sur "Continue" et MinGW installer devrai se lancer.
+
+ <img width="1430" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/58503a8f-1352-41d7-8ff1-7175fc7b9d07">
+
+ 
