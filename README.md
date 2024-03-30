@@ -44,5 +44,7 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  Pour ce fait, ouvrez une fenêtre de Windows Explorer et faite un clique droit sur "ce PC"(dans la barre des racourcis à gauche), puis Cliquez sur propriétés.
  ![Sans titre](https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/6dd14ef1-09ea-4aeb-87f4-7f469a7f7f95)
  Ensuite, cliquez sur "paramètres avancés du système".
+ 
  <img width="308" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/ddb52f36-c738-4162-9281-d0626ce43691">
+ 
  Puis sur "Variables d'envirronement...".
