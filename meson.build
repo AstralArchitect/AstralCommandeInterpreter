@@ -1,6 +1,7 @@
 project('AstralCommandInterpreter', 'c')
-
-executable('AstralCommandInterpreter', 'Code/Main/main.c', 'Code/lib/universallib.c')
+libNd = library('lib', 'Code/lib/commandes_System/ls.c', 'Code/lib/commandes_System/rm.c', 'Code/lib/commandes_System/configure.c', 'Code/lib/commandes_System/aff.c', 'Code/lib/commandes_System/touch.c')
+lib = library('universallib', 'Code/lib/universallib.c', link_with : libNd)
+executable('AstralCommandInterpreter', 'Code/Main/main.c', link_with : lib)
 
 # Pour utiliser meson, tu dois l'installer (ça parait logique)
 # je conseille cette commande: pip install meson

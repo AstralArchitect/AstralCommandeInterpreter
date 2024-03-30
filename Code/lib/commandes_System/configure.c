@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int configure() {
+int configure(char argument[]) {
     
     #ifdef _WIN32
     FILE *fichier = fopen(".\\us.conf", "w+");

@@ -2,12 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../lib/universallib.h"
+#include "../lib/H/universallib.h"
 
 #define MAX_INPUT_SIZE 100
 #define INVITE_MAX_SIZE 30
-
-bool RemoveUs = false;
 
 //fonction pour vider le buffer
 void viderBuffer()
@@ -97,7 +95,7 @@ int main() {
   #else
     fichier = fopen("./astral.conf", "r");
   #endif
-  clear();
+  printf("\033[2J\033[H");
   if(fichier != NULL){
     fscanf(fichier, "%c, %c, %d, ", &color1, &color2, &ShowUserName);
     fgets(text, INVITE_MAX_SIZE, fichier);
@@ -129,44 +127,46 @@ int main() {
     textColor = getColor(color2);
     fclose(fichier);
   }
+  #ifdef _WIN32
+  FILE *us = fopen(".\\us.conf", "r");
+  #elif _WIN64
+  FILE *us = fopen(".\\us.conf", "r");
+  #else
+  FILE *us = fopen("./us.conf", "r");
+  #endif
+  char UserName[100];
+  if(us != NULL){
+    fgets(UserName, 99, us);
+    fclose(us);
+  }
+  else{
+    printf("\033[0;31mimpossible d'ouvrir us.conf.\033[0;37m\n");
+    printf("Quel est votre nom d'utilisateur ?:");
+    fgets(UserName, 99, stdin);
+    char *retour = strchr(UserName, '\n');
+    if(retour != NULL){
+      *retour = '\0';
+    }
+    else{
+      viderBuffer();
+    }
+    #ifdef _WIN32
+      us = fopen(".\\us.conf", "w+");
+    #elif _WIN64
+      us = fopen(".\\us.conf", "w+");
+    #else
+      us = fopen("./us.conf", "w+");
+    #endif
+    fprintf(us, "%s", UserName);
+    fclose(us);
+  }
   typedPrint("Bienvenu dans l'AstralCommandeInterpreter,", "\033[0;37m", 50);
   while(1){
     char commande[MAX_INPUT_SIZE + 1];
     printf("\033[0;%dm", charColor);
     if(ShowUserName){
-      #ifdef _WIN32
-      FILE *us = fopen(".\\us.conf", "r");
-      #elif _WIN64
-      FILE *us = fopen(".\\us.conf", "r");
-      #else
-      FILE *us = fopen("./us.conf", "r");
-      #endif
-      char UserName[100];
       if(us != NULL){
-        fgets(UserName, 99, us);
         printf("%s:%s ", UserName, text);
-      }
-      else{
-        printf("\033[0;31mimpossible d'ouvrir us.conf.\033[0;37m\n");
-        printf("Quel est votre nom d'utilisateur ?:");
-        fgets(UserName, 99, stdin);
-        char *retour = strchr(UserName, '\n');
-        if(retour != NULL){
-          *retour = '\0';
-        }
-        else{
-          viderBuffer();
-        }
-        #ifdef _WIN32
-        us = fopen(".\\us.conf", "w+");
-        #elif _WIN64
-        us = fopen(".\\us.conf", "w+");
-        #else
-        us = fopen("./us.conf", "w+");
-        #endif
-        fprintf(us, "%s", UserName);
-        fclose(us);
-        continue;
       }
     }
     else{
@@ -196,7 +196,7 @@ int main() {
       printf("\033[0;37m");
       return 0;
     }
-    else if(commande[0] == 'r' && commande[1] == 'e' && commande[2] == 'l' && commande[3] == 'o' && commande[4] == 'a' && commande[5] == 'd'){
+    else if(strcmp(commande, "reload") == 0){
       //recharger AstralConfig
       fichier = fopen("./astral.conf", "r");
       if(fichier != NULL){
@@ -204,16 +204,29 @@ int main() {
         fgets(text, INVITE_MAX_SIZE, fichier);
         charColor = getColor(color1);
         textColor = getColor(color2);
-        if(RemoveUs){
-          remove("./us.conf");
-        }
         fclose(fichier);
       }
       else{
         printf("\033[0;31merreur, le fichier Astral.conf n'a pas pus etre ouvert.\n\033[0;37m");
       }
+      //recharger us.conf
+      #ifdef _WIN32
+        us = fopen(".\\us.conf", "r");
+      #elif _WIN64
+        us = fopen(".\\us.conf", "r");
+      #else
+        us = fopen("./us.conf", "r");
+      #endif
+      char UserName[100];
+      if(us != NULL){
+        fgets(UserName, 99, us);
+        fclose(us);
+      }
+      else{
+        printf("\e[0;31mle fichier us.conf est introuvable.\e[0;37m\n");
+      }
     }
-    else if (commande[0] == 's' && commande[1] == 'y' && commande[2] == 's')
+    else if (strcmp(commande, "sys") == 0)
     {
       System();
     }

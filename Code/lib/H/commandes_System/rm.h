@@ -1,0 +1,1 @@
+int rm(char arg[100]);

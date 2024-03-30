@@ -1,5 +1,5 @@
 all:
-	meson setup bin/
+	meson setup bin/ --reconfigure
 	meson compile -C bin/
 run:
 	bin/AstralCommandInterpreter

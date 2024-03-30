@@ -3,7 +3,7 @@
   #include <stdlib.h>
   #define MAX 256
 
-  int mv(int argc[100]) {
+  int mv(int argc[100], char *argv[]) {
         int ch;
         FILE *fp1, *fp2;
 

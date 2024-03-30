@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(void) {
+int date() {
   int month, day, year;
 
   // Standard date form

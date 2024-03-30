@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdlib.h": "c",
+			"universallib.h": "c",
+			"rm.h": "c",
+			"configure.h": "c"
+		}
+	}
+}

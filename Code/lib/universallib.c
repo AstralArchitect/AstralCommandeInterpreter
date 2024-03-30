@@ -1,15 +1,58 @@
 #include <stdio.h>
-#include "../Programmes/commandes_System/aff.c"
-#include "../Programmes/commandes_System/ls.c"
-//#include "../Programmes/commandes_System/mv.c"
-#include "../Programmes/commandes_System/rm.c"
-#include "../Programmes/configure/main.c"
 #include <stdbool.h>
+
+#include "../lib/H/commandes_System/aff.h"
+#include "../lib/H/commandes_System/ls.h"
+//#include "../Programmes/commandes_System/mv.c" ne marche pas pour l'instant
+#include "../lib/H/commandes_System/rm.h"
+#include "../lib/H/commandes_System/configure.h"
+#include "../lib/H/commandes_System/touch.h"
+
+
 #ifdef _WIN32
 #include <windows.h>
 
 void sleep_ms(DWORD milliseconds) {
     Sleep(milliseconds);
+}
+
+#elif _WIN64
+#include <windows.h>
+
+void sleep_ms(DWORD milliseconds) {
+    Sleep(milliseconds);
+}
+
+#else
+
+#include <time.h>
+
+void sleep_ms(unsigned long milliseconds) {
+    struct timespec ts;
+
+    ts.tv_sec = milliseconds / 1000;
+    ts.tv_nsec = (milliseconds % 1000) * 1000000;
+
+    nanosleep(&ts, NULL);
+}
+
+
+#endif
+
+#include <string.h>
+#include <stdio.h>
+
+void typedPrint(char text[100], char color[11], int speed) {
+    printf("%s", color);
+    for(int i = 0; i < strlen(text); i++){
+        printf("%c", text[i]);
+
+        // Nécessaire pour que l'effet marche sous Linux
+        fflush(stdout);
+
+        sleep_ms(speed);
+    }
+    printf("\n");
 }
 
 void execute(char commande[30]) {
@@ -40,57 +83,16 @@ void execute(char commande[30]) {
     {
         rm(argumment);
     }
+    else if (commande[0] == 'c' && commande[1] == 'o' && commande[2] == 'n' && commande[3] == 'f' && commande[4] == 'i' && commande[5] == 'g' && commande[6] == 'u' && commande[7] == 'r' && commande[8] == 'e')
+    {
+        configure(argumment);
+    }
+    else if (commande[0] == 't' && commande[1] == 'o' && commande[2] == 'u' && commande[3] == 'c' && commande[4] == 'h')
+    {
+        touch(argumment);
+    }
     else{
         printf("commande introuvable.\n");
     }
     
-}
-
-#else
-
-#include <time.h>
-
-void sleep_ms(unsigned long milliseconds) {
-    struct timespec ts;
-
-    ts.tv_sec = milliseconds / 1000;
-    ts.tv_nsec = (milliseconds % 1000) * 1000000;
-
-    nanosleep(&ts, NULL);
-}
-
-char *exePath() {
-    return "Lin";
-}
-
-void execute(char commande[16]) {
-    printf("\033[0;37m");
-    char exe[100];
-    sprintf(exe, "./%s", commande);
-    system(exe);
-}
-
-
-#endif
-
-#include <string.h>
-#include <stdio.h>
-
-void typedPrint(char text[100], char color[11], int speed) {
-    printf("%s", color);
-    for(int i = 0; i < strlen(text); i++){
-        printf("%c", text[i]);
-
-        // Nécessaire pour que l'effet marche sous Linux
-        fflush(stdout);
-
-        sleep_ms(speed);
-    }
-    printf("\n");
-}
-
-void clear() {
-    // 2J: Efface l'écran
-    // H = 1;1H: Déplace le curseur en haut à gauche
-    printf("\033[2J\033[H");
 }

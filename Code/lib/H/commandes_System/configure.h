@@ -1,0 +1,1 @@
+int configure(char argument[]);
