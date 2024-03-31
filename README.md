@@ -92,6 +92,7 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  - Make
  - Meson
  - Ninja
+ 
  Vous pouvez maintenant compiler le code.
  Pour ce fait, rendez vous dans le dossier AstralCommandeInterpreter et tapez la commande
  ```
