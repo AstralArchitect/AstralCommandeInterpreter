@@ -51,4 +51,49 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
 
  ![Sans titre](https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/312049d4-3074-452a-9317-1d9b1e078a5f)
 
-Puis cliquez sur "Path" puis "Modifier".
+ Puis cliquez sur "Path" puis "Modifier".
+
+ ![Sans titre2](https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/8f83117a-9925-4599-b36f-66a296a6f01b)
+
+ Enfin, cliquez sur Ok, la fenêtre va se fermer puis sur l'anciennne fenêtre, cliquez une 2ème fois sur ok, elle se fermera aussi et cliquez sur appliquer.
+ 
+ Gcc est maintenant installé sur votre ordinateur!
+## Installer Make
+ Maintenant, vous aurez besoin de [Make](https://www.gnu.org/software/make/) pour compiler le code. pour l'installer sur :
+ ### Linux Debian/Ubuntu ou Kali Linux
+ Pour installer make sur Debian ou Ubuntu, tapez la commande suivante dans un terminal :
+  ```
+  sudo apt-get install gcc
+  ```
+### Arch Linux
+  Pour installer make sur Arch Linux, tapez la commande suivante dans un terminal :
+  ```
+  sudo pacman -S make
+  ```
+### Alpine Linux
+  Pour installer make sur Alpine Linux, tapez la commande suivante dans un terminal :
+  ```
+  sudo apk add make
+  ```
+### Windows 
+ Pour installer make sur Windows, tapez la commande suivante dans un terminal ouvert en tant qu'Administrateur:
+  ```
+  choco install make
+  ```
+## Installer Meson et Ninja
+ Une fois avoir installer make, rendez vous dans le répertoire AstralCommandeInterpreter et tapez 
+ ```
+ make install
+ ```
+ Pour que cela marche, vous aurez besoin d'installer [Python](https://www.python.org/).
+## Compiler le code
+ Maintenant que vous avez installé : 
+ - GCC
+ - Make
+ - Meson
+ - Ninja
+ Vous pouvez maintenant compiler le code.
+ Pour ce fait, rendez vous dans le dossier AstralCommandeInterpreter et tapez la commande
+ ```
+ make
+ ```
