@@ -48,3 +48,7 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  <img width="308" alt="image" src="https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/ddb52f36-c738-4162-9281-d0626ce43691">
  
  Puis sur "Variables d'envirronement...".
+
+ ![Sans titre](https://github.com/AstralArchitect/AstralCommandeInterpreter/assets/154975712/312049d4-3074-452a-9317-1d9b1e078a5f)
+
+Puis cliquez sur "Path" puis "Modifier".
