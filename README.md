@@ -2,7 +2,7 @@
 
 Ceci est un interpréteur de commande inventé par AstralArchitect en collaboration avec [Nautilus-1021](https://github.com/Nautilus-1021)
 
-# Compiler et executer
+# Compiler
 
 ## installer un compilateur
 Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Personnelement, je vous recommande [gcc](https://gcc.gnu.org/) que vous pouvez installer sur:
@@ -98,3 +98,6 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  ```
  make
  ```
+# Executer
+ Vous avez maintenant compilé le code. Pour l'éxécuter il vous suffira juste de taper la commande ``make run``. sinon, l'éxécutable est dans le dossier bin/.
+// # Documantation
