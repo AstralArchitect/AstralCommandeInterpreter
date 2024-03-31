@@ -100,4 +100,3 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  ```
 # Executer
  Vous avez maintenant compilé le code. Pour l'éxécuter il vous suffira juste de taper la commande ``make run``. sinon, l'éxécutable est dans le dossier bin/.
-// # Documantation
