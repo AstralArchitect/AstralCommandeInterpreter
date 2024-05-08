@@ -63,7 +63,7 @@ Pour compiler le code, vous devrez d'abors installer un compilateur C/C++. Perso
  ### Linux Debian/Ubuntu ou Kali Linux
  Pour installer make sur Debian ou Ubuntu, tapez la commande suivante dans un terminal :
   ```
-  sudo apt-get install gcc
+  sudo apt-get install make
   ```
 ### Arch Linux
   Pour installer make sur Arch Linux, tapez la commande suivante dans un terminal :
