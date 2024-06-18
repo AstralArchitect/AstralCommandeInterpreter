@@ -1,9 +1,6 @@
 all:
-	meson setup bin/ --reconfigure
-	meson compile -C bin/
-run:
-	bin/AstralCommandInterpreter
-install:
-	pip install meson ninja
-removeMeson:
-	pip uninstall meson ninja
+	meson compile -C builddir/
+run: all
+	builddir/main
+setup:
+	meson setup builddir/
